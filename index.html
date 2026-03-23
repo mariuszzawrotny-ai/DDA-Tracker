@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="12 Kroków DDA">
+<meta name="theme-color" content="#5C3D2E">
+<title>Plan 12 Kroków DDA</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAASbUlEQVR4nO3deVxU1fsH8M8MMwyrELiAiIobiLKIC4Jrlku2qeWWa+aept/KMiu3RC23zCy3cImyMjPLNP1ZuZDKosgiSwqaSgkqq6wzzPz+QBCCgRnmDDP3nuf9T7yYe5/zTJ7P3DN3LnMlaAQT+/lqGmMcIi5hZ+Mkxh7DKAPQhCfGYIxAMC1IE580BpZBMLgQTXpiSoaGQWrIzjT5iakZOgcblB6a+MQcNeRooPcRgCY/MVcNmZt6BYAmPzF3+s5RnQNAk58IhT5zVacA0OQnQqPrnK03ADT5iVDpMnfrDABNfiJ09c1hrQGgyU/Eoq65XGsAaPITsdE2pw36JJgQoasRAHr1J2JV29yW1rcBIWLy3zlOSyDCNQoA4VplAGj5Q3hRda7TEYBwTQrQqz/hT8WcpyMA4RoFgHCNAkC4JqH1P+EZHQEI1ygAhGsUAMI1CgDhGgWAcI0CQLhGASBcowAQrlEACNcoAIRrFADCNQoA4RoFgHCNAkC4RgEgXJOZugFjsra1xYjJ0zHwmRGQShuW9W+3f4qTPx5g3Jlx2No3QVMXVzRt4Vr+34c/29jZQWFlBUsrKygU1g9/VqCsrAwqpRIqpRJFBQXIz81Bfm4Osu/dRWb6bWSk38LtG2nIysww9VMzGtEGoPegIRg9fS6aPPaYqVsxCmsbW7Tt5AUPr85o5+kND09vvZ+rTCaFTCYHrAG7Jg5o5tqy1u1y7t9DWnIiEi9FITbiHHLu32PxFMyC6ALQso0HJry6EJ18/E3dClMymRwdfXzh1ysYnbt1h2vrNpBIGmcF6+jcFAF9+iOgT39MmPc6rqck4eyvRxB1+jeUFBc3Sg/GIpoAKKyt8exLUzB45BhILSxM3Q4T9g6O8OnZG76BQejSvResrG1M3RIkEgnaeXmjnZc3xsx8Fb8fPogTB79FYcEDU7fWIKIIQPe+AzF21jw81rSZqVthava7K8z6SGZtY4unx0/G48+NwuF9X+CPn3+ERqM2dVt6EXQAmru1wktzF6JLQE9Tt8I1G1s7jJ+zAD0HDELoutW4e+cfU7ekM0EGQG6pwNPjJmLoi+Mhk8tN3Y7ZSb+RhsRL0UiOvYS7//6DB3m5KHiQD7lcDtsmDmju6oZ2nb3h2zMI7b27Mhu3g7cP3v1kO7avXo6kyxeZ1TUmwQXALzAY42a/hqYurqZuxexcTYjDkf17kXgputbHS8rKUFJcjKzMDCTHXsLRb8LQsnVbPD9pGgL6DmDSg619EyxctQ471q7ExfBTTGoak2AC4NzCBeNnvwa/3n1M3YrZUavVOLRnJ3498LXe+/5z8wY+D1mKgL4DMO2NJVBYWRncj9TCAjPefh/K0hLERZ43uJ4xmf0nwTKZHE+Pm4QPduzTefJHnfkd+bk5xm3MTKjLyrBl2eIGTf6qLoWfxvq3XkNxUSGTvixkMkx/+300b+nGpJ6xmHUAvAN6YPm23RgxZTrklop6t0+/cR3r3lqAHWtWoLSkpBE6NL2vP9+MhOgIJrVuXE3Bzg8/YFILKD9LNOud5Q3+FL4xmG9nAGa8vQwt3Nzr3a6osADf7diKlfNewV/xl43fmJmIPvMHTv9ymGnNuIhziDr9G7N6rTt0Qv+nnmVWjzWzDkB9NBoNzv92HO9Nn4D/O/Qd1GVlpm6p0aiUShzcvd0otb/ZvgVFhQXM6j03aRrklpbM6rEk2ADcTL2KD9+ch9D1q5GXnW3qdhrdmWM/496df41SOy87G5F/nGRWz97BET37D2JWjyXBBaAgPw9fbd2EVfNnIjUxwdTtmMz5k78atf45xvX7DB3OtB4rgjkNqtGoEX78KH7YvQMP8nJN3Y5J3bl9Ezeuphh1jLTkRGSm30Zzt1ZM6nXo3BXWtrYoKmC3tGJBEAG4npKEr7duMvo/ulBciY5slHGuJSUwC4DUwgKduvohNuIck3qsmPUSKD83G/s2r8Oa/82hyV/F9b+SG2Wcm6lXmdZza9uOaT0WzPoIEPLaTMFfb24MNxopALeusQ2Ai3trpvVYMOsA8D751721wKTj38tge5bJ3sGRaT0WzHoJREyL5WcBAKCwsmZajwUKANGquLAIGg27eyjK5Oa34KAAEK00GjVKiouY1SspNr/rsygApE4sjwAPzPAKXQoAqZOlDlfh6up+5h1mtVihABCtLBVWsJCxW7ffSktlVosVCgDRytHZmWm9tOQrTOuxQAEgWjm3cGFWKzP9Nu7+a37fFkEBIFq18mjPrFbUmd+Z1WKJAkC0atPBk0kdtVqN8BNHmdRijQJAtPLy68akTvSZP4z2xzuGogCQWrm36wAHJ8PfBKtUShwOC2XQkXFQAEiteg5g8yeMJw5+i8z020xqGQMFgNRgIZMh6ImhBte5fT0VP4ftMbwhI6IAkBq69x0AR+emBtUoLHiAbSHLoFIpGXVlHBQAUo1UKsUzL00xqIZKpcS2kKXISL/FqCvjoQCQavoMGQ5X9zYN3l+tVmPn2pVIiqFvhyYCY+/giBemzWrw/iqVEjvWrEDMubMMuzIuCgCpNOm1N2Fr36RB+xYXFeLzVe9r/Wp2c0UBIACAwaPGoFtwvwbtm3U3E1uWLcbt6+Z3tWd9KAAEvr2C8OIrcxq077XEeGxbtRS52VmMu2ocFADOeXh2xswGfoX5qSM/4pvtW1CmUhmhs8ZBAeBY246eWBiyXu+7whQVFuDLzevN9gpPfVAAOOXh6Y2FIetgY2un137XU5Kwc+1KQd0Jsi4UAA517dELs9/9QK9XfrVajV+++RJHvt4rqvswUAA4E/zkMExesEivv/W9c+smQjeswfWURCN2ZhoUAE5IJBKMnDoDT42ZoPM+arUaJw5+i5/CQqEsLTVid6ZDAeCAlbUNpi1agm5Bup/n//fW3whdv7rRvojXVCgAIufq3gZzl66CSyvdvplZo1Hj5KHvcWjvTtG+6ldFARCxnv0HYcrCt6Cw1u1Lae/++w92b1yDqwlxRu7MfFAAREhuqcC42fP1uj3p6V8O48Cuz7j7SnoKgMi0bOOBmYuXwa2th07bZ9+7iz2b1gruIjZWKAAiIZFIMOi5UXhh2myd78l7/rcT2P/5x8xvXPfyG+8g+MlhNX6vVqsx6+nHmY5lKAqACDg6N8XLr78D74AeOm2fl52NL7esx+Xz4UbuzPxRAAQuoE9/TF6wSOfr+C+Gn0LYlo3c32q2AgVAoCwVVhg3ez76DXtGp+0L8vOw//PNiGB4B3gxoAAIUOv2HTFj8VKdz+3HR13A3o8/Qm7WfSN3JjwUAAGRSCQYPGoMRk6dAZlMXu/2xUWF+G7HVpz99UgjdCdMFACBcHjMCdPefFfnN7rJsTHYs3EN7mdmGLkzYaMACIBfYDCmvr4Ydk0c6t22tKQYP+zegd9/+oHp/b3EigJgxuSWlhg9fS4ef3akTtunJl1B6IbVZv1dnOaGAmCmmrm2xKtLV+v8iS4AtO/cBSG7vjJiV+JD3wxnpjp29dNr8pOGoQAQrlEACNcoAIRrFADCNQoA4ZrZnwYd9NwojJ+zwGTjj501D2NnzdN7v1nPDBLV9+eIFR0BCNcoAIRrFADCNQoA4RoFgHBNMrGfL10zS7hFRwDCNQoA4RoFgHCNAkC4RgEgXKMAEK5RAAjXKACEaxQAwjUKAOEaBYBwjQJAuEYBIFyjABCuUQAI1ygAhGtm/7UoRD9zlyyHp48v4qIiELrpI7pHQD0EHYAO3l0x//2V1X63++N1uBxx3kQd1c3Y/QYNGgxPH1/8nXoV+z7dRJNfB4JeAl1LTMCC8aOwYPwoU7eiE2P26+DkhOcnTEHW3Uzs/Gg1lKWlzMcQI0EHgDwydvocABps+3AV8ukewDqjAIhAj74D4OXjh10bPkQG3R5JL4J+D0DKRYefRnT4aVO3IUh0BCBcowAQrol+CbR6517Y2tnX+P1Hi99A1t1MrP3iy2q/P3Hoexz7/hv0H/Y0evV/HM1cXGCpsAIAfL9nF84eP1q5rUcnL/QdPAztvDqjiYMjVCol7mVkIDHmIs78+kuD3ozW1W/639er/U6f8V98eQb6DXmqRt2TPx3Cz/sf/T/w7x2Mlxe8iUvnwrF3y8Zq227Y9y1k8kd3qM/PzcF7s6fp/RzNiegDsGTGFAwfMx6DnxuFr7ZtQXT4mWqPV5ySfGfdZri0codEKsGMRUvg7R+gtaZEIsGIiVMxcPizuJmWirCtm3Ez7RosFVbwDwzC8y9NRt8hw7Bn8wakxMcy7beh43+/eycO7tmFFZ/uhIOTE47/cABHD+yvUTsgqC8AoGv3HrBUKFBaUlL52BuTx8KtTVu8tXYjtnywFNcSE/R6buZI1EsgiUSCF6dOxxPPjEDox+tqnUz/1XvgE3Bxa4XQTR/h/TnT8Obksdi1YW21D5WGjhqDgcOfRU7WfXwWsgypyYlQlpaiID8Pf548ji8/+wQ2tnaY/sZitHRvw7zfho6v0WhwObL8Qzf/3sE16iqsreHdrTsAwFJhhS4BPWps0613H+Tn5iA16YrOz8uciTYAUqkUE2bPR+DAQdixLgTx0ZE67WdtY4utIcsRG3kBeTk5UCqViI+OxMKXXsDZ40fh6OSMISNeAACcPX4URYWFNWrER0fgzu1bsFQo8PzEKUz7NXT8yxfOAQBatHSDq3vrao/59gyEWqVCSnwcgEdHg6r8ewcjNvKCaD5lFmUAZHI5Xl64CAF9+mFryIrKf1BdJMXG4F7GHa2P+wUGwUJWvnL860q81u0qHvP08YOtfRNm/Ro6/vW/kpGbnQUA8A+sfhToHtwP8RejEBV+CgDQ2T8AVtY2lY+3auuBZi6uiDn/Z53PR0hEFwBLhRVmLloC356BsLCwQDNXV732r2vyA+WToML9zEyt293PzABQvqxxa619GaRvv4aOr9FoEBt5AQDQrcoyyNbOHp5dfRFz4U8kREeiTKWCXC6HT89eldt0690HeTk5SE1OrLNHIRFdAEZNeQXNXFwr36CNnjoDzs1b6Lx/fdfQWNs8ekVUlpZo3U5Z5c2jta2t1u307ZfF+JXLILdWcGnlDqB8aVNaWoLkuMsoKixE8sM3z1WXQeXLn/OiWf4AIgxAfk42Pl6+BHs+2Yj8vFworK0xed7/ILWwYFK/sKCg8me5pULrdnLFo8eKquxjaL8sxk9LSUJeTjaAR0eBgOC+SLgYBZVSCeBRSDx9/GBjZwd3j/Zo2sIFMRfEs/wBRBiAXw7sR25WFvJzc7B/26cAgLYdO2HoyNFM6qf/faPyZ+fmzbVuV/EqrtFokH7zb2b9shhfo9Eg9uEl2P6BwXB4zAntvbwRc/5c5TbxD5dBFhYW8OsVhG5BwcjLyUZacpLWMYVIdAFAlcPzlZiLOHviGABgyMgX0c7Ty+DylyPOoUylAgB06uKjdbuO3l0BAMlxl1GQn8esX1bjx0SUT3aXVu4YPnociouKkBQXU/l4UWEBUhIeng0K7gv/wGDERohr+QOIMQD/cThsD+7cvgWpVIpJry6sdlajIXKzsnDix4MAgH5Dh1dbk1fw6dELru6tUVpSgp++2se0X1bjpyU/Wgb1fvxJJFyMqgxWhYplUKcuPnBu3gIxF87VqCN0og+AUqnEvk83QaVUwqlZc4yeNtPgmsd/+A6njh2Bo5MzXn1vBdp7eUMul8PWzh59nhiCSXMXoKiwALs2rMU/t7QvfxraL4vxq54NAlDr2j4+OhJlD+92n5eTjbQUcS1/AIHfJM/RyRkrtu6s9bFD+0Jx6tgRzHlnKbx8/Ws8XlRYiMWvTMTaL8JqfRUFgE1LF+PG1b+0jl9xLU57L280cXSESqXCvYw7SIy5iNPHjtS4FohFv4aM/18dOnfB/KUfoKiwEO/OmlrjCAAAs95+D97+AThz/CgO7tlVZz0hEnQACDGU6JdAhNSFAkC4RgEgXKMAEK5RAAjXKACEaxQAwjUKAOEaBYBwjQJAuEYBIFyjABCuUQAI16RhZ+Mkpm6CEFMIOxsnoSMA4RoFgHCNAkC4JgXK10KmboSQxlQx5+kIQLhWGQA6ChBeVJ3rdAQgXKMAEK5VCwAtg4jY/XeO1zgCUAiIWNU2t2kJRLhWawDoKEDERtuc1noEoBAQsahrLte5BKIQEKGrbw7X+x6AQkCESpe5q9ObYAoBERpd56zOZ4EoBEQo9Jmrep0GpRAQc6fvHNX7cwAKATFXDZmbBk1mursMMQeGvCgb9EkwHQ2IqRk6B5lOYDoikMbA8oXXKK/gFARiDMZYcTTKEoYCQRqiMZbY/w//cLgnlBOvSAAAAABJRU5ErkJggg==">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #F7F4EF;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE7;
+    --border: rgba(0,0,0,0.08);
+    --border2: rgba(0,0,0,0.14);
+    --text: #1A1714;
+    --text2: #5C574F;
+    --text3: #9C9589;
+    --green: #2A7A56;
+    --green-bg: #EAF5EE;
+    --green-light: #C7E8D4;
+    --amber: #B06B10;
+    --amber-bg: #FDF3E4;
+    --amber-light: #F5D9A0;
+    --red: #A33030;
+    --red-bg: #FCEAEA;
+    --red-light: #F5C0C0;
+    --accent: #5C3D2E;
+    --accent-light: #EDE4DC;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --nav-h: 64px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    height: 100%;
+    overscroll-behavior: none;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    overflow: hidden;
+  }
+
+  /* APP SHELL */
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    height: 100vh;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.25rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .topbar-title {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .topbar-sub {
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .topbar-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  .topbar-pct {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .topbar-bar-wrap {
+    width: 80px;
+    height: 4px;
+    background: var(--surface2);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .topbar-bar-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 99px;
+    transition: width .5s ease;
+  }
+
+  /* SCROLL AREA */
+  .scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .page-content {
+    padding: 1.25rem 1rem;
+    padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + 1rem);
+    min-height: 100%;
+  }
+
+  /* BOTTOM NAV */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: flex;
+    height: var(--nav-h);
+    padding-bottom: var(--safe-bottom);
+    z-index: 100;
+    flex-shrink: 0;
+  }
+
+  .nav-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+    color: var(--text3);
+    font-size: 11px;
+    font-weight: 500;
+    transition: color .15s;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .nav-btn.active { color: var(--accent); }
+
+  .nav-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  /* VIEWS */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .section-sub {
+    font-size: 13px;
+    color: var(--text3);
+    margin-bottom: 1.25rem;
+  }
+
+  /* METRIC CARDS */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+  }
+
+  .metric-label {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--text3);
+    margin-bottom: 4px;
+  }
+
+  .metric-value {
+    font-family: 'Lora', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .metric-sub {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+
+  /* STEP CARDS */
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background .12s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .step-card:active { background: var(--surface2); }
+
+  .step-card-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-green { background: var(--green); }
+  .dot-amber { background: #D4820F; }
+  .dot-gray  { background: #C5C0B8; }
+
+  .step-card-body { flex: 1; min-width: 0; }
+
+  .step-card-krok {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text3);
+    margin-bottom: 2px;
+  }
+
+  .step-card-name {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .step-card-meta {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 2px;
+  }
+
+  .step-card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .step-count {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text2);
+  }
+
+  .mini-bar-bg {
+    width: 48px;
+    height: 3px;
+    background: var(--surface2);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .mini-bar-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 99px;
+  }
+
+  /* BADGE */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .badge-green { background: var(--green-bg); color: var(--green); }
+  .badge-amber { background: var(--amber-bg); color: var(--amber); }
+  .badge-red   { background: var(--red-bg);   color: var(--red); }
+
+  /* DETAIL */
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--accent);
+    cursor: pointer;
+    margin-bottom: 1rem;
+    padding: 8px 0;
+    font-weight: 500;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .detail-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .detail-source {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--text3);
+    margin-bottom: 6px;
+  }
+
+  .detail-title {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .detail-values {
+    font-size: 12px;
+    color: var(--text2);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .detail-nums {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .detail-num-cell {
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    padding: .6rem .5rem;
+    text-align: center;
+  }
+
+  .detail-num {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .detail-num-lbl {
+    font-size: 10px;
+    color: var(--text3);
+    margin-top: 1px;
+  }
+
+  /* PROGRESS RING */
+  .progress-ring-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .ring-info { flex: 1; }
+
+  .ring-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .ring-sub {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  /* ADD MEETING */
+  .add-meeting-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: .85rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .add-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  input[type="date"] {
+    flex: 1;
+    padding: .65rem .9rem;
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--surface);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="date"]:focus { border-color: var(--accent); }
+
+  .btn {
+    padding: .65rem 1.1rem;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .15s;
+    border: none;
+    white-space: nowrap;
+  }
+
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:active { background: #4A2E21; transform: scale(.98); }
+
+  .btn-sm {
+    padding: .3rem .75rem;
+    font-size: 12px;
+    background: var(--red-bg);
+    color: var(--red);
+    border: 1px solid var(--red-light);
+    border-radius: var(--radius-sm);
+  }
+
+  .meeting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .65rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .meeting-row:last-child { border-bottom: none; }
+
+  .meeting-date { font-size: 14px; font-weight: 500; color: var(--text); }
+  .meeting-num  { font-size: 11px; color: var(--text3); }
+
+  .empty { text-align: center; padding: 1.5rem; font-size: 13px; color: var(--text3); }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: calc(var(--nav-h) + var(--safe-bottom) + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: var(--text);
+    color: #fff;
+    padding: .65rem 1.25rem;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    transition: all .25s;
+    z-index: 200;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* OVERALL PROGRESS BAR */
+  .full-progress-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .fp-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--text3); margin-bottom: 6px; }
+  .fp-bar-bg { background: var(--surface2); border-radius: 99px; height: 8px; overflow: hidden; }
+  .fp-bar-fill { height: 100%; background: var(--green); border-radius: 99px; transition: width .5s; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div>
+      <div class="topbar-title">12 Kroków DDA</div>
+      <div class="topbar-sub">Plan postępu</div>
+    </div>
+    <div class="topbar-progress">
+      <span class="topbar-pct" id="top-pct">0%</span>
+      <div class="topbar-bar-wrap">
+        <div class="topbar-bar-fill" id="top-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCROLL -->
+  <div class="scroll-area" id="scroll-area">
+    <div class="page-content">
+
+      <!-- DASHBOARD -->
+      <div class="view active" id="view-dashboard">
+        <div class="section-title">Dashboard</div>
+        <div class="section-sub">Twoje postępy</div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-label">Ukończone kroki</div>
+            <div class="metric-value" id="m-done">0</div>
+            <div class="metric-sub">z 20</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Spotkania</div>
+            <div class="metric-value" id="m-meet">0</div>
+            <div class="metric-sub" id="m-meet-sub">z 66 est.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">W toku</div>
+            <div class="metric-value" id="m-prog">0</div>
+            <div class="metric-sub">aktywnych</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Postęp</div>
+            <div class="metric-value" id="m-pct">0%</div>
+            <div class="metric-sub">ukończone</div>
+          </div>
+        </div>
+
+        <div class="full-progress-wrap">
+          <div class="fp-label">
+            <span>Postęp spotkań</span>
+            <span id="fp-label-right">0 / 66</span>
+          </div>
+          <div class="fp-bar-bg">
+            <div class="fp-bar-fill" id="fp-bar" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div style="font-family:'Lora',serif;font-size:16px;font-weight:500;margin-bottom:.85rem;">Kroki</div>
+        <div id="dash-steps"></div>
+      </div>
+
+      <!-- STEPS LIST -->
+      <div class="view" id="view-steps">
+        <div class="section-title">Wszystkie kroki</div>
+        <div class="section-sub">Kliknij, aby zobaczyć szczegóły</div>
+        <div id="all-steps"></div>
+      </div>
+
+      <!-- DETAIL -->
+      <div class="view" id="view-detail">
+        <div class="back-btn" onclick="goBack()">← Powrót</div>
+        <div id="detail-content"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" id="nav-dashboard" onclick="showView('dashboard')">
+      <span class="nav-icon">📊</span>
+      <span>Dashboard</span>
+    </button>
+    <button class="nav-btn" id="nav-steps" onclick="showView('steps')">
+      <span class="nav-icon">📋</span>
+      <span>Kroki</span>
+    </button>
+  </nav>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STEPS = [
+  {id:0,source:"Wielka Czerwona Księga",krok:"Wprowadzenie",nazwa:"Dorosłe dziecko, Lista cech DDA",wartosci:"Samoświadomość, uczciwość wobec siebie, akceptacja, gotowość do zmiany",strony:32,pytania:1,estSpotkania:1},
+  {id:1,source:"Wielka Czerwona Księga",krok:"Rozdział 1 i 2",nazwa:'1. Lista cech DDA – Problem. 2. „Mnie to nigdy nie spotka"',wartosci:"Uznanie problemu, pokora, przełamanie zaprzeczeń, odwaga do zobaczenia prawdy",strony:56,pytania:1,estSpotkania:1},
+  {id:2,source:"Wielka Czerwona Księga",krok:"Rozdział 3 i 4",nazwa:'3. „Moi rodzice nie pili, ale ja mogę się z tym utożsamić". 4. Sięgnięcia dna DDA.',wartosci:"Identyfikacja, otwartość, wrażliwość, akceptacja własnej historii, poddanie się",strony:21,pytania:1,estSpotkania:1},
+  {id:3,source:"Wielka Czerwona Księga",krok:"Rozdział 5 i 6",nazwa:'5. DDA jest programem duchowym, nie religijnym. 6. DDA – jak to działa.',wartosci:"Duchowość, zaufanie, nadzieja, wiara, gotowość do działania, konsekwencja",strony:17,pytania:1,estSpotkania:1},
+  {id:4,source:"Żółty Zeszyt",krok:"Rozdział 7 BRB",nazwa:"Wstęp",wartosci:"Chęć pracy nad sobą",strony:20,pytania:1,estSpotkania:1},
+  {id:5,source:"Żółty Zeszyt",krok:"Krok 1",nazwa:"Przyznaliśmy, że jesteśmy bezsilni wobec skutków alkoholizmu lub innej dysfunkcji rodzinnej, że nie potrafimy kierować własnym życiem.",wartosci:"Bezsilność i poddanie się",strony:21,pytania:49,estSpotkania:19},
+  {id:6,source:"Żółty Zeszyt",krok:"Krok 2",nazwa:"Uwierzyliśmy, że Siła większa od nas samych może przywrócić nam zdrowie.",wartosci:"Brak uprzedzeń i jasność myślenia",strony:14,pytania:45,estSpotkania:9},
+  {id:7,source:"Żółty Zeszyt",krok:"Krok 3",nazwa:"Postanowiliśmy powierzyć naszą wolę i nasze życie opiece Boga, jakkolwiek Go pojmujemy.",wartosci:"Gotowość i przyjmowanie pomocy",strony:14,pytania:31,estSpotkania:6},
+  {id:8,source:"Żółty Zeszyt",krok:"Krok 4",nazwa:"Dokonaliśmy wnikliwego i odważnego obrachunku moralnego nas samych.",wartosci:"Odwaga i uczciwość wobec siebie",strony:38,pytania:8,estSpotkania:8},
+  {id:9,source:"Żółty Zeszyt",krok:"Krok 5",nazwa:"Wyznaliśmy Bogu, sobie i drugiemu człowiekowi istotę naszych błędów.",wartosci:"Uczciwość i zaufanie",strony:12,pytania:4,estSpotkania:4},
+  {id:10,source:"Żółty Zeszyt",krok:"Krok 6",nazwa:"Staliśmy się całkowicie gotowi, aby Bóg uwolnił nas od tych wszystkich wad charakteru.",wartosci:"Gotowość",strony:8,pytania:2,estSpotkania:2},
+  {id:11,source:"Żółty Zeszyt",krok:"Krok 7",nazwa:"Pokornie zwróciliśmy się do Boga, aby usunął nasze niedoskonałości.",wartosci:"Pokora",strony:7,pytania:2,estSpotkania:2},
+  {id:12,source:"Żółty Zeszyt",krok:"Krok 8",nazwa:"Sporządziliśmy listę wszystkich osób, które skrzywdziliśmy, i staliśmy się gotowi zadośćuczynić im wszystkim.",wartosci:"Gotowość i wybaczanie samemu sobie",strony:6,pytania:1,estSpotkania:1},
+  {id:13,source:"Żółty Zeszyt",krok:"Krok 9",nazwa:"Zadośćuczyniliśmy osobiście tym osobom, gdziekolwiek było to możliwe.",wartosci:"Przebaczenie oraz odwaga",strony:11,pytania:1,estSpotkania:1},
+  {id:14,source:"Żółty Zeszyt",krok:"Krok 10",nazwa:"Prowadziliśmy nadal osobisty rachunek sumienia, natychmiast przyznając się do popełnionych błędów.",wartosci:"Uczciwość i rozeznanie",strony:16,pytania:19,estSpotkania:2},
+  {id:15,source:"Żółty Zeszyt",krok:"Krok 11",nazwa:"Poprzez modlitwę i medytację dążyliśmy do pogłębienia naszego świadomego kontaktu z Bogiem.",wartosci:"Poszukiwanie i słuchanie",strony:11,pytania:2,estSpotkania:2},
+  {id:16,source:"Żółty Zeszyt",krok:"Krok 12",nazwa:"Przebudzeni duchowo w rezultacie tych kroków, staraliśmy się nieść to przesłanie innym.",wartosci:"Miłość i miłość do samego siebie",strony:12,pytania:1,estSpotkania:1},
+  {id:17,source:"Wielka Czerwona Księga",krok:"Rozdział 8 do 15",nazwa:"Rozwiązanie, sponsorowanie, nawrót, relacje, miłość do siebie.",wartosci:"Samoopieka, odpowiedzialność, wspólnota, miłość do siebie",strony:156,pytania:1,estSpotkania:2},
+  {id:18,source:"Wielka Czerwona Księga",krok:"Rozdział 16 do 19",nazwa:"DDA i terapia, globalny zasięg, nastoletnie DDA, Dwanaście Tradycji DDA.",wartosci:"Jedność, przynależność, zasady, służba",strony:114,pytania:1,estSpotkania:1},
+  {id:19,source:"Wielka Czerwona Księga",krok:"Zakończenie",nazwa:"Podręcznik dla dorosłych dzieci.",wartosci:"Wdzięczność, rozwój, nadzieja",strony:76,pytania:1,estSpotkania:1},
+];
+
+function loadMeetings() {
+  try { return JSON.parse(localStorage.getItem('dda_meetings_v2') || '{}'); }
+  catch(e) { return {}; }
+}
+
+function saveMeetings(d) {
+  localStorage.setItem('dda_meetings_v2', JSON.stringify(d));
+}
+
+let meetings = loadMeetings();
+let currentStepId = null;
+let prevView = 'dashboard';
+
+function getMeetingsFor(id) { return (meetings[id] || []).sort(); }
+function countDone(id) { return getMeetingsFor(id).length; }
+function getStatus(id) {
+  const d = countDone(id), e = STEPS[id].estSpotkania;
+  if (d === 0) return 'none';
+  if (d >= e) return 'done';
+  return 'inprogress';
+}
+
+function dotClass(id) {
+  const s = getStatus(id);
+  return s === 'done' ? 'dot-green' : s === 'inprogress' ? 'dot-amber' : 'dot-gray';
+}
+
+function badge(id) {
+  const s = getStatus(id);
+  if (s === 'done') return '<span class="badge badge-green">✓ Ukończony</span>';
+  if (s === 'inprogress') return '<span class="badge badge-amber">W toku</span>';
+  return '<span class="badge badge-red">Nie zaczęty</span>';
+}
+
+function totalEst() { return STEPS.reduce((s,st) => s + st.estSpotkania, 0); }
+function totalDoneMeet() { return STEPS.reduce((s,_,i) => s + countDone(i), 0); }
+function totalDoneSteps() { return STEPS.filter((_,i) => getStatus(i) === 'done').length; }
+function totalInProg() { return STEPS.filter((_,i) => getStatus(i) === 'inprogress').length; }
+
+function formatDate(d) {
+  if (!d) return '';
+  const [y,m,day] = d.split('-');
+  return `${day}.${m}.${y}`;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function updateTopBar() {
+  const est = totalEst(), done = totalDoneMeet();
+  const pct = est > 0 ? Math.round(done / est * 100) : 0;
+  document.getElementById('top-pct').textContent = pct + '%';
+  document.getElementById('top-bar').style.width = pct + '%';
+}
+
+function showView(name, stepId) {
+  if (name !== 'detail') prevView = name;
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const nb = document.getElementById('nav-' + (name === 'detail' ? prevView : name));
+  if (nb) nb.classList.add('active');
+  document.getElementById('scroll-area').scrollTop = 0;
+
+  if (name === 'detail' && stepId !== undefined) {
+    currentStepId = stepId;
+    renderDetail(stepId);
+  }
+  if (name === 'dashboard') renderDashboard();
+  if (name === 'steps') renderStepsList();
+  updateTopBar();
+}
+
+function goBack() { showView(prevView); }
+
+function stepCardHTML(i, compact) {
+  const s = STEPS[i];
+  const done = countDone(i);
+  const pct = s.estSpotkania > 0 ? Math.round(done / s.estSpotkania * 100) : 0;
+  return `<div class="step-card" onclick="showView('detail', ${i})">
+    <div class="step-card-dot ${dotClass(i)}"></div>
+    <div class="step-card-body">
+      <div class="step-card-krok">${s.krok} · ${s.source}</div>
+      <div class="step-card-name">${s.nazwa.split('\n')[0].substring(0,70)}${s.nazwa.length > 70 ? '…' : ''}</div>
+      ${!compact ? `<div class="step-card-meta">${s.wartosci.substring(0,50)}…</div>` : ''}
+    </div>
+    <div class="step-card-right">
+      <span class="step-count">${done}/${s.estSpotkania}</span>
+      <div class="mini-bar-bg"><div class="mini-bar-fill" style="width:${pct}%"></div></div>
+    </div>
+  </div>`;
+}
+
+function renderDashboard() {
+  const est = totalEst(), done = totalDoneMeet();
+  const pct = est > 0 ? Math.round(done / est * 100) : 0;
+  document.getElementById('m-done').textContent = totalDoneSteps();
+  document.getElementById('m-meet').textContent = done;
+  document.getElementById('m-meet-sub').textContent = `z ${est} est.`;
+  document.getElementById('m-prog').textContent = totalInProg();
+  document.getElementById('m-pct').textContent = pct + '%';
+  document.getElementById('fp-bar').style.width = pct + '%';
+  document.getElementById('fp-label-right').textContent = `${done} / ${est}`;
+  document.getElementById('dash-steps').innerHTML = STEPS.map((_,i) => stepCardHTML(i, true)).join('');
+}
+
+function renderStepsList() {
+  document.getElementById('all-steps').innerHTML = STEPS.map((_,i) => stepCardHTML(i, false)).join('');
+}
+
+function renderDetail(id) {
+  const s = STEPS[id];
+  const done = countDone(id);
+  const remaining = Math.max(0, s.estSpotkania - done);
+  const pct = s.estSpotkania > 0 ? Math.round(done / s.estSpotkania * 100) : 0;
+  const meetList = getMeetingsFor(id);
+
+  const meetingsHTML = meetList.length === 0
+    ? '<div class="empty">Brak spotkań.<br>Dodaj pierwsze spotkanie powyżej.</div>'
+    : meetList.map((d, idx) => `
+      <div class="meeting-row">
+        <div>
+          <div class="meeting-date">${formatDate(d)}</div>
+          <div class="meeting-num">Spotkanie #${idx + 1}</div>
+        </div>
+        <button class="btn btn-sm" onclick="removeMeeting(${id}, '${d}')">Usuń</button>
+      </div>
+    `).join('');
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-card">
+      <div class="detail-source">${s.source} · ${id + 1} z 20</div>
+      <div class="detail-title">${s.krok}: ${s.nazwa.replace(/\n/g, ' ')}</div>
+      <div class="detail-values">✦ ${s.wartosci}</div>
+      ${badge(id)}
+    </div>
+
+    <div class="detail-nums">
+      <div class="detail-num-cell"><div class="detail-num">${s.strony}</div><div class="detail-num-lbl">stron</div></div>
+      <div class="detail-num-cell"><div class="detail-num">${s.pytania}</div><div class="detail-num-lbl">pytań</div></div>
+      <div class="detail-num-cell"><div class="detail-num" style="color:var(--green)">${done}</div><div class="detail-num-lbl">odbytych</div></div>
+      <div class="detail-num-cell"><div class="detail-num" style="color:${remaining > 0 ? 'var(--amber)' : 'var(--green)'}">${remaining}</div><div class="detail-num-lbl">pozostało</div></div>
+    </div>
+
+    <div class="progress-ring-wrap">
+      <svg width="56" height="56" viewBox="0 0 56 56">
+        <circle cx="28" cy="28" r="22" fill="none" stroke="#E8E3DC" stroke-width="5"/>
+        <circle cx="28" cy="28" r="22" fill="none" stroke="${pct >= 100 ? '#2A7A56' : '#B06B10'}" stroke-width="5"
+          stroke-linecap="round"
+          stroke-dasharray="${Math.round(2 * 3.14159 * 22)}"
+          stroke-dashoffset="${Math.round(2 * 3.14159 * 22 * (1 - pct/100))}"
+          transform="rotate(-90 28 28)"/>
+        <text x="28" y="33" text-anchor="middle" font-size="12" font-weight="600" fill="${pct >= 100 ? '#2A7A56' : '#B06B10'}" font-family="sans-serif">${pct}%</text>
+      </svg>
+      <div class="ring-info">
+        <div class="ring-label">Postęp spotkań</div>
+        <div class="ring-sub">${done} z ${s.estSpotkania} estymowanych spotkań</div>
+      </div>
+    </div>
+
+    <div class="add-meeting-wrap">
+      <div class="card-title">Dodaj spotkanie ze sponsorem</div>
+      <div class="add-row">
+        <input type="date" id="meeting-input" />
+        <button class="btn btn-primary" onclick="addMeeting()">Dodaj</button>
+      </div>
+      <div id="meetings-list">${meetingsHTML}</div>
+    </div>
+  `;
+
+  // Set today
+  const today = new Date().toISOString().split('T')[0];
+  const inp = document.getElementById('meeting-input');
+  if (inp) inp.value = today;
+}
+
+function addMeeting() {
+  if (currentStepId === null) return;
+  const inp = document.getElementById('meeting-input');
+  if (!inp || !inp.value) { showToast('Wybierz datę'); return; }
+  if (!meetings[currentStepId]) meetings[currentStepId] = [];
+  if (meetings[currentStepId].includes(inp.value)) { showToast('To spotkanie już istnieje'); return; }
+  meetings[currentStepId].push(inp.value);
+  saveMeetings(meetings);
+  renderDetail(currentStepId);
+  updateTopBar();
+  showToast('Spotkanie dodane ✓');
+}
+
+function removeMeeting(id, date) {
+  if (!meetings[id]) return;
+  meetings[id] = meetings[id].filter(d => d !== date);
+  saveMeetings(meetings);
+  renderDetail(id);
+  updateTopBar();
+  showToast('Spotkanie usunięte');
+}
+
+// INIT
+renderDashboard();
+renderStepsList();
+updateTopBar();
+
+// SW Registration
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE = 'dda-v1';
+    self.addEventListener('install', e => {
+      self.skipWaiting();
+    });
+    self.addEventListener('fetch', e => {
+      e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+    });
+  `;
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(() => {});
+}
+</script>
+</body>
+</html>
